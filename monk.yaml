@@ -1,0 +1,32 @@
+namespace: coreui-free-vue-admin-template
+
+coreui-vue-frontend:
+  defines: runnable
+  metadata:
+    name: coreui-vue-frontend
+    description: Frontend service for the CoreUI Vue.js admin template.
+    icon: https://emojiapi.dev/api/v1/desktop_computer.svg
+  containers:
+    coreui-vue-frontend:
+      image: env-5453.registry.local/coreui-vue-frontend:v5-jcuo2t
+      build: .
+      dockerfile: Dockerfile.coreui-vue-frontend
+  services:
+    http-server:
+      description: HTTP server listening port
+      container: coreui-vue-frontend
+      port: 3000
+      host-port: 3000
+      publish: true
+      protocol: tcp
+  connections: {}
+  variables: {}
+
+stack:
+  defines: group
+  members:
+    - coreui-free-vue-admin-template/coreui-vue-frontend
+  metadata:
+    name: coreui-free-vue-admin-template
+    description: A free Vue.js admin template using CoreUI with Vite as a build tool.
+    icon: https://emojiapi.dev/api/v1/desktop_computer.svg
